@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  font-family: helvetica;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0
+}
+
+#canvas {
+    display: grid;
+    border-radius: 5vmin;
+    background-color: #a2cbb6;
+    grid-template-rows: repeat(3, 20vmin);
+    grid-template-columns: repeat(3, 20vmin);
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 5vmin;
+}
+
