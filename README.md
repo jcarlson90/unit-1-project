@@ -1,10 +1,1 @@
-# hello
-
-<h1>hi</h1>
-
-***hi***
-- I
-- Am
-- Cool
-
-made a save!
+Thank god for the connect four game to reference.
