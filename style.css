@@ -9,13 +9,15 @@ h1 {
     color: lime;
     display: grid;
     flex-direction: column;
-    padding: 1%;
-    background-color: black;
+    margin: 1vmin;
+    padding: 1vmin;
     border-radius: 10%;
+    background-color: black;
     border: solid;
     border-color: hotpink;
     border-spacing: 5vmin;
     border-width: 1vmin;
+    
 }
 
 body {
@@ -27,7 +29,13 @@ body {
     margin: 0;
     padding: 1%;
     margin-top: 5vmin;
-    background-color: black; 
+    /*background-color: black;*/
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 30px auto 100px ;
+    /*background-position: left top;*/
+    /*background-repeat: repeat;*/
+    padding: 15px;
+   
 }
 
 #canvas {
@@ -47,7 +55,12 @@ body {
 
 button {
     border-radius: 20%;
-    margin-top: 5vmin;
+    margin-top: 1vmin;
+    border: solid;
+    border-color: hotpink;
+    border-width: 1vmin;
+    color: lime;
+    background-color: black;
 }
 
 #board {
@@ -89,4 +102,5 @@ button {
     background-color: red;
   }
 
+  
 
