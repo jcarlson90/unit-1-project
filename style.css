@@ -27,8 +27,7 @@ body {
     margin: 0;
     padding: 1%;
     margin-top: 5vmin;
-    background-image: url();
-    background-repeat: no-repeat; 
+    background-color: black; 
 }
 
 #canvas {

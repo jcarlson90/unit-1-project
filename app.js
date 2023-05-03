@@ -20,7 +20,14 @@ let turn, canvas, winner
 //FUNCTIONS//
 function announceWinner() {
     for (let i = 0; i < waysToWin.length; i++) {
-        if (Math.abs(board[waysToWin[i][0]] + canvas[waysToWin[i][1]] + canvas[waysToWin[i][2]]) === 3)
+        if (Math.abs(canvas[waysToWin[i][0]] + canvas[waysToWin[i][1]] + canvas[waysToWin[i][2]]) === 3)
         return canvas[waysToWin[i][0]];
     }
+}
+
+function intialize(){
+    canvas = [null, null, null, null, null, null, null, null, null];
+    turn = 1
+    winner = null;
+    render();
 }
