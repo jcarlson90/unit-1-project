@@ -21,21 +21,20 @@ let canvas;
 let winner; //will bet set to either null, -1, 1, or 'T'
 
 //CACHED//
-const message = document.querySelector('h1');
+const message = document.querySelector('h2');
 const playAgainBtn = document.querySelector('button');
-//const canvasEls = [...document.querySelectorAll('#canvas > div ')];
 
 //EVENT LISTENERS//
 document.getElementById('canvas').addEventListener('click',
-handleMove);
-playAgainBtn.addEventListener('click', init);
+playerMove);
+playAgainBtn.addEventListener('click', initialize);
 
 //FUNCTIONS//
-init();
+initialize();
 
-function intialize() {
+function initialize() {
     canvas = [null, null, null, null, null, null, null, null, null];
-    turn = 1
+    turn = 1;
     winner = null;
     render();
 }
@@ -50,7 +49,7 @@ function announceWinner() {
 }
 
 function playerMove(evt) {
-    const idx = parseInt(evt.target.id.replace('sq-', ''));
+    const idx = parseInt(evt.target.id.replace('square', ''));
     if (
         isNaN(idx) ||
         canvas[idx] ||
@@ -64,9 +63,30 @@ function playerMove(evt) {
 
 function renderCanvas() {
     canvas.forEach(function(sqVal, idx) {
-        const squareEl = document.getElementById(`sq-${idx}`);
-        squareEl.style.backgroundColor = COLOR_LOOKUP[sqVal];
-        squareEl.classname = !sqVal ? 'avail' : '';
+        const squareEl = document.getElementById(`square${idx}`);
+        squareEl.style.backgroundColor = colors[squareVal];
+        squareEl.classname = !squareVal ? 'avail' : '';
     });
 }
+
+function render() {
+    renderCanvas();
+    renderMessage();
+    playAgainBtn.disabled = !winner;
+}
+
+function renderMessage() {
+    if (winner === 'T'){
+        message.innerHTML = 'Tie Game';
+    } else if (winner) {
+        message.innerHTML = `Winner is <span style="color:
+        ${colors[winner]}">${colors[winner].toUpperCase()}
+        </span>!`;
+    } else {
+        message.innerHTML = `<span style='color:
+        ${colors[turn]}">${colors[turn].toUpperCase()}
+        </span>'s Turn`;
+    }
+}
+
 

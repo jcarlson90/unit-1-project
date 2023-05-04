@@ -38,21 +38,6 @@ body {
    
 }
 
-#canvas {
-    display: grid;
-    border-radius: 10%;
-    background-color: black;
-    grid-template-rows: repeat(3, 20vmin);
-    grid-template-columns: repeat(3, 20vmin);
-    padding: 1vmin;
-    border: solid;
-    border-color: hotpink;
-    border-spacing: 5vmin;
-    border-width: 1vmin;
-}
-
-
-
 button {
     border-radius: 20%;
     margin-top: 1vmin;
@@ -63,19 +48,30 @@ button {
     background-color: black;
 }
 
-#board {
+h2 {
+    margin-top: 0;
+    margin-bottom: 5vmin;
+    
+
+}
+
+#canvas {
     display: grid;
     grid-template-columns: repeat(3, 20vmin);
     grid-template-rows: repeat(3, 20vmin);
-    background-color: whitesmoke;
+    background-color: darkslategray;
     border-radius: 5vmin;
+    border: solid;
+    border-color: hotpink;
+    border-spacing: 5vmin;
+    border-width: 1vmin;
   }
   
   #canvas > div {
     border-radius: 50%;
     margin: 3vmin;
-    background-color: white;
-    border: 1vmin solid white;
+    background-color: black;
+    border: .6vmin solid darkmagenta;
   }
   
   #canvas > div.avail {
@@ -89,7 +85,7 @@ button {
   button:disabled {
     background-color: red;
     color: black;
-    cursor:grab
+    cursor:grab;
   }
   
   button:hover:not(:disabled) {
