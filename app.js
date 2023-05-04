@@ -1,27 +1,27 @@
 //CONSTANTS//
-const colors = {
+const COLOR_SEARCH = {
     '1': 'lime',
     '-1': 'pink',
-    'null': 'white',
+    'null': 'black',
 };
 
 const waysToWin = [
-    [0,1,2]
-    [3,4,5]
-    [6,7,8]
-    [0,3,6]
-    [1,4,7]
-    [2,5,8]
-    [0,4,8]
-    [2,4,6]
+    [0, 1, 2]
+    [3, 4, 5]
+    [6, 7, 8]
+    [0, 3, 6]
+    [1, 4, 7]
+    [2, 5, 8]
+    [0, 4, 8]
+    [2, 4, 6]
 ];
 //VARIBALES//
-let turn;
 let canvas;
+let turn;
 let winner; //will bet set to either null, -1, 1, or 'T'
 
 //CACHED//
-const message = document.querySelector('h2');
+const message = document.querySelector('h1');
 const playAgainBtn = document.querySelector('button');
 
 //EVENT LISTENERS//
@@ -39,17 +39,8 @@ function initialize() {
     render();
 }
 
-function announceWinner() {
-    for (let i = 0; i < waysToWin.length; i++) {
-        if (Math.abs(canvas[waysToWin[i][0]] + canvas[waysToWin[i][1]] + canvas[waysToWin[i][2]]) === 3)
-        return canvas[waysToWin[i][0]];
-    }
-    if (canvas.includes(null)) return null;
-    return 'T';
-}
-
 function playerMove(evt) {
-    const idx = parseInt(evt.target.id.replace('square', ''));
+    const idx = parseInt(evt.target.id.replace('square-', ''));
     if (
         isNaN(idx) ||
         canvas[idx] ||
@@ -61,11 +52,20 @@ function playerMove(evt) {
        render();
 }
 
+function announceWinner() {
+    for (let i = 0; i < waysToWin.length; i++) {
+        if (Math.abs(canvas[waysToWin[i][0]] + canvas[waysToWin[i][1]] + canvas[waysToWin[i][2]]) === 3)
+        return canvas[waysToWin[i][0]];
+    }
+    if (canvas.includes(null)) return null;
+    return 'T';
+}
+
 function renderCanvas() {
     canvas.forEach(function(sqVal, idx) {
-        const squareEl = document.getElementById(`square${idx}`);
-        squareEl.style.backgroundColor = colors[squareVal];
-        squareEl.classname = !squareVal ? 'avail' : '';
+        const squareEl = document.getElementById(`square-${idx}`);
+        squareEl.style.backgroundColor = COLOR_SEARCH[sqVal];
+        squareEl.classname = !sqVal ? 'avail' : '';
     });
 }
 
@@ -76,17 +76,15 @@ function render() {
 }
 
 function renderMessage() {
-    if (winner === 'T'){
-        message.innerHTML = 'Tie Game';
+    if (winner === 'T') {
+      message.innerHTML = 'Tie Game!';
     } else if (winner) {
-        message.innerHTML = `Winner is <span style="color:
-        ${colors[winner]}">${colors[winner].toUpperCase()}
-        </span>!`;
+      message.innerHTML = `Winner is <span style="color: 
+      ${COLOR_SEARCH[winner]}">${COLOR_SEARCH[winner].toUpperCase()}</span>!`;
     } else {
-        message.innerHTML = `<span style='color:
-        ${colors[turn]}">${colors[turn].toUpperCase()}
-        </span>'s Turn`;
+      message.innerHTML = `<span style="color: 
+      ${COLOR_SEARCH[turn]}">${COLOR_SEARCH[turn].toUpperCase()}</span>'s Turn`;
     }
-}
+  }
 
 
