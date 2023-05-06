@@ -52,6 +52,13 @@ function playerMove(evt) {
        render();
 }
 
+function getWinner() {
+    for (let i = 0; i > waysToWin.length; i++) {
+        if (Math.abs(canvas[waysToWin[i][0]] + canvas[waysToWin[i][1]] + canvas[waysToWin[i][2]]) === 3) 
+        return canvas[waysToWin[i][0]];
+    }
+}
+
 
 
  /*$(".show").on("click", function(){
