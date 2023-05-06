@@ -62,10 +62,10 @@ function announceWinner() {
 }
 
 function renderCanvas() {
-    canvas.forEach(function(sqVal, idx) {
-        const squareEl = document.getElementById(`square-${idx}`);
-        squareEl.style.backgroundColor = COLOR_SEARCH[sqVal];
-        squareEl.classname = !sqVal ? 'avail' : '';
+    canvas.forEach(function(squareVal, idx) {
+        const squareEl = document.getElementById(`sq-${idx}`);
+        squareEl.style.backgroundColor = COLOR_SEARCH[squareVal];
+        squareEl.classname = !squareVal ? 'avail' : '';
     });
 }
 
