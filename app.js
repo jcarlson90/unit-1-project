@@ -6,14 +6,14 @@ const COLOR_SEARCH = {
 };
 
 const waysToWin = [
-    [0, 1, 2]
-    [3, 4, 5]
-    [6, 7, 8]
-    [0, 3, 6]
-    [1, 4, 7]
-    [2, 5, 8]
-    [0, 4, 8]
-    [2, 4, 6]
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
 ];
 //VARIBALES//
 let canvas;
@@ -52,39 +52,7 @@ function playerMove(evt) {
        render();
 }
 
-function announceWinner() {
-    for (let i = 0; i < waysToWin.length; i++) {
-        if (Math.abs(canvas[waysToWin[i][0]] + canvas[waysToWin[i][1]] + canvas[waysToWin[i][2]]) === 3)
-        return canvas[waysToWin[i][0]];
-    }
-    if (canvas.includes(null)) return null;
-    return 'T';
-}
 
-function render() {
-    renderCanvas();
-    renderMessage();
-    playAgainBtn.disabled = !winner;
-}
-
-function renderCanvas() {
-    canvas.forEach(function(sqVal, idx) {
-        const squareEl = document.getElementById(`circle-${idx}`);
-        squareEl.style.backgroundColor = COLOR_SEARCH[sqVal];
-        squareEl.classname = !sqVal ? 'avail' : '';
-    });
-}
-function renderMessage() {
-    if (winner === 'T') {
-      message.innerHTML = 'Tie Game!';
-    } else if (winner) {
-      message.innerHTML = `Winner is <span style="color: 
-      ${COLOR_SEARCH[winner]}">${COLOR_SEARCH[winner].toUpperCase()}</span>!`;
-    } else {
-      message.innerHTML = `<span style="color: 
-      ${COLOR_SEARCH[turn]}">${COLOR_SEARCH[turn].toUpperCase()}</span>'s Turn`;
-    }
-  }
 
  /*$(".show").on("click", function(){
     $(".mask").addClass("active");
