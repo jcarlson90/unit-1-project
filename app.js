@@ -40,7 +40,7 @@ function initialize() {
 }
 
 function playerMove(evt) {
-    const idx = parseInt(evt.target.id.replace('square-', ''));
+    const idx = parseInt(evt.target.id.replace('circle-', ''));
     if (
         isNaN(idx) ||
         canvas[idx] ||
@@ -61,20 +61,19 @@ function announceWinner() {
     return 'T';
 }
 
-function renderCanvas() {
-    canvas.forEach(function(squareVal, idx) {
-        const squareEl = document.getElementById(`sq-${idx}`);
-        squareEl.style.backgroundColor = COLOR_SEARCH[squareVal];
-        squareEl.classname = !squareVal ? 'avail' : '';
-    });
-}
-
 function render() {
     renderCanvas();
     renderMessage();
     playAgainBtn.disabled = !winner;
 }
 
+function renderCanvas() {
+    canvas.forEach(function(sqVal, idx) {
+        const squareEl = document.getElementById(`circle-${idx}`);
+        squareEl.style.backgroundColor = COLOR_SEARCH[sqVal];
+        squareEl.classname = !sqVal ? 'avail' : '';
+    });
+}
 function renderMessage() {
     if (winner === 'T') {
       message.innerHTML = 'Tie Game!';
@@ -86,5 +85,23 @@ function renderMessage() {
       ${COLOR_SEARCH[turn]}">${COLOR_SEARCH[turn].toUpperCase()}</span>'s Turn`;
     }
   }
+
+ /*$(".show").on("click", function(){
+    $(".mask").addClass("active");
+  });
+  
+  function closeModal(){
+    $(".mask").removeClass("active");
+  }
+  
+  $(".close, .mask").on("click", function(){
+    closeModal();
+  });
+  
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) {
+      closeModal();
+    }
+  });*/
 
 
