@@ -21,9 +21,19 @@
   h1 {
     margin-top: 0;
     margin-bottom: 5vmin;
+    color: whitesmoke;
+    padding: 2vmin;
+
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 5vmin;
+    color: whitesmoke;
+    
   }
   
-  #canvas {
+  #game {
     display: grid;
     grid-template-columns: repeat(3, 21vmin);
     grid-template-rows: repeat(3, 21vmin);
@@ -36,7 +46,7 @@
     padding: 4vmin;
   }
   
-  #canvas > div {
+  #game > div {
     margin: 3vmin;
     background-color: white;
     border: solid;
@@ -44,11 +54,11 @@
    
   }
   
-  #canvas > div.avail {
+  #game > div.avail {
     cursor: crosshair;
   }
   
-  #canvas > div.avail:hover {
+  #game > div.avail:hover {
     border-color: grey;
   }
   
