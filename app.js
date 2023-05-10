@@ -1,92 +1,103 @@
-//CONSTANTS//
-const PLAYER_X = 'x'
+//CONSTANTS
+const X_CLASS = 'x';
 
-const PLAYER_O = 'circle'
+const CIRCLE_CLASS = 'circle';
 
-const waysToWin = [
-	[0, 1, 2],
-	[3, 4, 5],
-	[6, 7, 8],
-	[0, 3, 6],
-	[1, 4, 7],
-	[2, 5, 8],
-	[0, 4, 8],
-	[2, 4, 6]
-]
-//VARIBALES//
-let game;
-let turn;
-let winner; //will bet set to either null, -1, 1, or 'T'
+const WINNING_COMBINATIONS = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+];
 
-//CACHED//
-const gameElements = document.querySelectorAll('[data-circle]')
-const boardElement = document.getElementById('game')
+//CACHED ELEMENTS
+const message = document.querySelector('h2')
+const cellElements = document.querySelectorAll('[data-cell]')
+const board = document.getElementById('board')
 const winningMessageElement = document.getElementById('winningMessage')
-const playAgainBtn = document.getElementById('playAgainBtn')
-const winningMessageTextElement = document.getElementById('winningMessageText')
-let isPlayer_0_Turn = false //makes player "X" go first
+const restartButton = document.getElementById('playAgainBtn')
+const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
+let circleTurn
 
-//EVENT LISTENERS//
-document.getElementById('canvas').addEventListener('click',
-playerMove);
-playAgainBtn.addEventListener('click', initialize);
+startGame()
 
-//FUNCTIONS//
-initialize();
+//EVENT LISTENERS
+playAgainBtn.addEventListener('click', startGame)
 
-function initialize() {
-    canvas = [null, null, null, null, null, null, null, null, null];
-    turn = 1;
-    winner = null;
-    render();
+//FUNCTIONS
+function startGame() {
+  circleTurn = false
+  cellElements.forEach(cell => {
+    cell.classList.remove(X_CLASS)
+    cell.classList.remove(CIRCLE_CLASS)
+    cell.removeEventListener('click', handleClick)
+    cell.addEventListener('click', handleClick, { once: true })
+  })
+  setBoardHoverClass()
+  winningMessageElement.classList.remove('show')
 }
 
-function playerMove(evt) {
-    const idx = parseInt(evt.target.id.replace('circle-', ''));
-    if (
-        isNaN(idx) ||
-        canvas[idx] ||
-        winner
-       ) return;
-       canvas[idx] = turn;
-       turn *= -1;
-       winner = announceWinner();
-       render();
+function handleClick(e) {
+  const cell = e.target
+  const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS
+  placeMark(cell, currentClass)
+  if (checkWin(currentClass)) {
+    endGame(false)
+  } else if (isDraw()) {
+    endGame(true)
+  } else {
+    swapTurns()
+    setBoardHoverClass()
+  }
 }
 
-function announceWinner() {
-    for (let i = 0; i > waysToWin.length; i++) {
-        if (Math.abs(canvas[waysToWin[i][0]] + canvas[waysToWin[i][1]] + canvas[waysToWin[i][2]]) === 3) 
-        return canvas[waysToWin[i][0]];
-    }
-    if (board.includes(null)) return null;
-    return 'T';
+function endGame(draw) {
+  if (draw) {
+    winningMessageTextElement.innerText = 'Tie Game!'
+  } else {
+    winningMessageTextElement.innerText = `${circleTurn ? "O" : "X"} Wins!`
+  }
+  winningMessageElement.classList.add('show')
 }
 
-function render() {
-  renderCanvas();
-  renderMessage();
-  playAgainBtn.disabled = !winner;
+function isDraw() {
+  return [...cellElements].every(cell => {
+    return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
+  })
 }
 
-function renderCanvas() {
-  canvas.forEach(function(sqVal, idx) {
-    const squareEl = document.getElementById('circle-${idx}');
-    squareEl.style.backgroundColor = PLAYERS[sqVal];
-    squareEl.className = !sqVal ? 'avail' : '';
-  });
+function placeMark(cell, currentClass) {
+  cell.classList.add(currentClass)
+}
+
+function swapTurns() {
+  circleTurn = !circleTurn
+}
+
+function setBoardHoverClass() {
+  board.classList.remove(X_CLASS)
+  board.classList.remove(CIRCLE_CLASS)
+  if (circleTurn) {
+    board.classList.add(CIRCLE_CLASS)
+  } else {
+    board.classList.add(X_CLASS)
+  }
+}
+
+function checkWin(currentClass) {
+  return WINNING_COMBINATIONS.some(combination => {
+    return combination.every(index => {
+      return cellElements[index].classList.contains(currentClass)
+    })
+  })
 }
 
 function renderMessage() {
-  if (winner === 'T') {
-    message.innerHTML = 'Tie game!';
-  } else if (winner) {
-    message.innerHTML = `Lets go <span style="color: 
-${PLAYERS[winner]}">${PLAYERS[winner].toUpperCase()}</span>!`;
-  } else {
-    message.innerHTML = `<span style="color: 
-${PLAYERS[turn]}">${PLAYERS[turn].toUpperCase()}</span>'s Turn`;
-  }
+  message.innerHTML = `${X_CLASS[turn]}'>${CIRCLE_CLASS[turn].toUpperCase()} Turn`;
 }
 
 
