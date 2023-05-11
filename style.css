@@ -19,8 +19,6 @@ body {
   padding: 1vmin;
   margin-top: 5vmin;
   background-color: black;
-  /*background-position: left top;*/
-  /*background-repeat: repeat;*/
   padding: 15px;
 
 }
@@ -117,12 +115,12 @@ h2 {
 
 .cell.x::before,
 .board.x .cell:not(.x):not(.circle):hover::before {
-  transform: rotate(45deg);
+  transform: rotate(35deg);
 }
 
 .cell.x::after,
 .board.x .cell:not(.x):not(.circle):hover::after {
-  transform: rotate(-45deg);
+  transform: rotate(-35deg);
 }
 
 .cell.circle::before,
@@ -154,7 +152,7 @@ h2 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, .9);
+  background-color: darkslategray;
   justify-content: center;
   align-items: center;
   color: white;
@@ -171,7 +169,7 @@ h2 {
 }
 
 .winning-message button:hover {
-  background-color: black;
+  background-color: darkslategray;
   color: white;
   border-color: white;
 }

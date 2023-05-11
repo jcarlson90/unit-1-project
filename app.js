@@ -1,7 +1,7 @@
 //CONSTANTS
-const X_CLASS = 'x';
+const PLAYER_X = 'x';
 
-const CIRCLE_CLASS = 'circle';
+const PLAYER_O = 'circle';
 
 const WINNING_COMBINATIONS = [
   [0, 1, 2],
@@ -32,8 +32,8 @@ playAgainBtn.addEventListener('click', startGame)
 function startGame() {
   circleTurn = false
   cellElements.forEach(cell => {
-    cell.classList.remove(X_CLASS)
-    cell.classList.remove(CIRCLE_CLASS)
+    cell.classList.remove(PLAYER_X)
+    cell.classList.remove(PLAYER_O)
     cell.removeEventListener('click', handleClick)
     cell.addEventListener('click', handleClick, { once: true })
   })
@@ -43,7 +43,7 @@ function startGame() {
 
 function handleClick(e) {
   const cell = e.target
-  const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS
+  const currentClass = circleTurn ? PLAYER_O : PLAYER_X
   placeMark(cell, currentClass)
   if (checkWin(currentClass)) {
     endGame(false)
@@ -66,7 +66,7 @@ function endGame(draw) {
 
 function isDraw() {
   return [...cellElements].every(cell => {
-    return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
+    return cell.classList.contains(PLAYER_X) || cell.classList.contains(PLAYER_O)
   })
 }
 
@@ -79,12 +79,12 @@ function swapTurns() {
 }
 
 function setBoardHoverClass() {
-  board.classList.remove(X_CLASS)
-  board.classList.remove(CIRCLE_CLASS)
+  board.classList.remove(PLAYER_X)
+  board.classList.remove(PLAYER_O)
   if (circleTurn) {
-    board.classList.add(CIRCLE_CLASS)
+    board.classList.add(PLAYER_O)
   } else {
-    board.classList.add(X_CLASS)
+    board.classList.add(PLAYER_X)
   }
 }
 
@@ -97,29 +97,13 @@ function checkWin(currentClass) {
 }
 
 function renderMessage() {
-  message.innerHTML = `${X_CLASS[turn]}'>${CIRCLE_CLASS[turn].toUpperCase()} Turn`;
+  message.innerHTML = `${PLAYER_X[turn]}'>${PLAYER_O[turn].toUpperCase()} Turn`;
 }
 
 
 
 
 
- /*$(".show").on("click", function(){
-    $(".mask").addClass("active");
-  });
-  
-  function closeModal(){
-    $(".mask").removeClass("active");
-  }
-  
-  $(".close, .mask").on("click", function(){
-    closeModal();
-  });
-  
-  $(document).keyup(function(e) {
-    if (e.keyCode == 27) {
-      closeModal();
-    }
-  });*/
+
 
 
