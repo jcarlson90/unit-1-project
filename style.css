@@ -26,13 +26,14 @@ body {
 h1 {
   color: whitesmoke;
   padding-bottom: 10vmin;
-  border-radius: 5vmin;
   border: solid;
   border-color: whitesmoke;
+  border-radius: 90%;
   border-spacing: 2vmin;
   border-width: 0.4vmin;
   padding: 1vmin;
   background-color: darkslategray;
+  font-size: 45px;
 }
 
 h2 {
@@ -152,7 +153,8 @@ h2 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: darkslategray;
+  background-color: black;
+  opacity: 85%;
   justify-content: center;
   align-items: center;
   color: white;

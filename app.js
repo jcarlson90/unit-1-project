@@ -96,9 +96,7 @@ function checkWin(currentClass) {
   })
 }
 
-function renderMessage() {
-  message.innerHTML = `${PLAYER_X[turn]}'>${PLAYER_O[turn].toUpperCase()} Turn`;
-}
+
 
 
 
