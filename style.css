@@ -27,8 +27,8 @@ h1 {
   color: whitesmoke;
   padding-bottom: 10vmin;
   border: solid;
-  border-color: whitesmoke;
-  border-radius: 90%;
+  border-color: red;
+  border-radius: 80%;
   border-spacing: 2vmin;
   border-width: 0.4vmin;
   padding: 1vmin;
@@ -47,7 +47,7 @@ h2 {
   background-color: darkslategray;
   border-radius: 5vmin;
   border: solid;
-  border-color: whitesmoke;
+  border-color: red;
   border-spacing: 2vmin;
   border-width: 0.4vmin;
   padding: 4vmin;
