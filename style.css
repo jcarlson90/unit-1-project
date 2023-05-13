@@ -114,8 +114,10 @@ h2 {
   height: var(--mark-size);
 }
 
+/* making the slashes to creat the "X" player */
+
 .cell.x::before,
-.board.x .cell:not(.x):not(.circle):hover::before {
+.board.x .cell:not(.x):not(.circle):hover::before {        
   transform: rotate(35deg);
 }
 

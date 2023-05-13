@@ -1,12 +1,12 @@
 //CONSTANTS
-const PLAYER_X = 'x';
+const PLAYER_X = 'x';        //creating the players
 
 const PLAYER_O = 'circle';
 
-const WINNING_COMBINATIONS = [
+const WINNING_COMBINATIONS = [     
   [0, 1, 2],
   [3, 4, 5],
-  [6, 7, 8],
+  [6, 7, 8],                 //8 different winning combos
   [0, 3, 6],
   [1, 4, 7],
   [2, 5, 8],
@@ -55,6 +55,7 @@ function handleClick(e) {
   }
 }
 
+                                            //shows winning message screen
 function endGame(draw) {
   if (draw) {
     winningMessageTextElement.innerText = 'Tie Game!'
@@ -75,7 +76,7 @@ function placeMark(cell, currentClass) {
 }
 
 function swapTurns() {
-  circleTurn = !circleTurn
+  circleTurn = !circleTurn          //the easiest function I wrote, and also the one I struggled with the most.
 }
 
 function setBoardHoverClass() {
