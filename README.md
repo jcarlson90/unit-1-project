@@ -12,7 +12,7 @@ codebrainer.com
 GAME PLAN:
 
 -Started off by making the HTML document and creating <divs>. Created a seperate <div> along with a button for a winning message and to ask the player if they'd like to play again. Also added in a google font for more original styling.
--After that a began to style the <divs> as well as the <body> and <h1> to my liking. Also had to do alot of styling to create the players inside the <divs> and adding hover effects before the player makes a turn.
+-After that a began to style the <divs> as well as the <body> and h1 to my liking. Also had to do alot of styling to create the players inside the <divs> and adding hover effects before the player makes a turn.
 -The Javascript starts of with constants to create the players "X" and "O" as well as all of the possible winning combinations. After that I created all the nessecary cached elements and also the event listener for the play again button. 
 -Made functions last to do things like render a new game, check which player's turn it is, and to show a winnig message with which player won or if the game is a tie.
 
